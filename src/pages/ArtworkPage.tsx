@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom"; // Import useNavigate
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
   Box,
@@ -32,7 +32,31 @@ function ArtworkPage() {
   const { artistId } = useParams<{ artistId: string }>();
   const [artist, setArtist] = useState<Artist | null>(null);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate(); // Initialize navigate function
+  const navigate = useNavigate();
+
+  // Define edit and delete handlers at the component level
+  const handleEditArtwork = (artworkId: string) => {
+    navigate(`/artwork/edit/${artworkId}`);
+  };
+
+  const handleDeleteArtwork = (artworkId: string) => {
+    if (window.confirm("Are you sure you want to delete this artwork?")) {
+      axios
+        .delete(`${import.meta.env.VITE_API_URL}/artworks/${artworkId}`)
+        .then(() => {
+          if (artist) {
+            setArtist({
+              ...artist,
+              artworks: artist.artworks.filter((artwork) => artwork.id !== artworkId),
+            });
+          }
+        })
+        .catch((error) => {
+          console.error("Error deleting artwork:", error);
+          alert("Failed to delete artwork. Please try again.");
+        });
+    }
+  };
 
   useEffect(() => {
     if (!artistId) {
@@ -72,8 +96,6 @@ function ArtworkPage() {
 
   return (
     <Box sx={{ p: 4 }}>
-      
-
       {/* Artist Details */}
       <Typography variant="h4" align="center" gutterBottom>
         Artworks by {artist.name}
@@ -101,6 +123,22 @@ function ArtworkPage() {
                 <Typography variant="body2" color="text.secondary">
                   Price: ${artwork.price}
                 </Typography>
+                {/* Edit and Delete Buttons */}
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  onClick={() => handleEditArtwork(artwork.id)}
+                  sx={{ mr: 1 }}
+                >
+                  Edit
+                </Button>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  onClick={() => handleDeleteArtwork(artwork.id)}
+                >
+                  Delete
+                </Button>
               </CardContent>
             </Card>
           </Grid>
@@ -110,12 +148,11 @@ function ArtworkPage() {
       <Button
         variant="contained"
         color="primary"
-        onClick={() => navigate("/")} 
+        onClick={() => navigate("/")}
         sx={{ mb: 2 }}
       >
         Back
       </Button>
-
     </Box>
   );
 }
