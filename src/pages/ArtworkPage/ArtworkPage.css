@@ -1,0 +1,132 @@
+/* General Page Styling */
+.artwork-page {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    padding: 20px;
+    max-width: 100%; /* Allow the page to cover the full width */
+    margin: 0 auto; /* Center content horizontally */
+    box-sizing: border-box; /* Ensure padding is included in width/height */
+   
+}
+
+/* Header Section */
+.artwork-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.artwork-header h1 {
+    font-size: 2.5em;
+    color: #2c3e50;
+}
+
+.artwork-header p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+/* Section Styling */
+.artwork-section {
+    display: flex;
+    justify-content: center; /* Center cards horizontally */
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 0 20px; /* Add padding for spacing */
+}
+
+/* Card Styling */
+.artwork-card {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    flex: 1 1 calc(33.333% - 40px); /* Make it responsive */
+    max-width: 400px; /* Prevent cards from growing too wide */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+}
+
+.artwork-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Ensure consistent image size */
+.artwork-card img {
+    width: 100%; /* Fill the card's width */
+    height: 200px; /* Set a fixed height */
+    object-fit: cover; /* Maintain aspect ratio, crop excess */
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.artwork-card h2 {
+    font-size: 1.5em;
+    color: #e67e22;
+    margin-bottom: 10px;
+}
+
+.artwork-card p {
+    font-size: 1em;
+    color: #555;
+}
+
+.artwork-card .button-group {
+    margin-top: 20px;
+}
+
+.artwork-card .button-group button {
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    font-size: 1em;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.artwork-card .button-group button:hover {
+    background-color: #e67e22;
+}
+
+/* Footer Section */
+.artwork-footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.artwork-footer button {
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.artwork-footer button:hover {
+    background-color: #e67e22;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .artwork-section {
+        flex-direction: column;
+        align-items: center; /* Center cards vertically */
+    }
+
+    .artwork-card {
+        flex: 1 1 100%;
+        max-width: 100%; /* Allow cards to fill the screen on small devices */
+    }
+}

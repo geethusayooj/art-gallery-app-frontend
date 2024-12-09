@@ -1,0 +1,89 @@
+/* General Page Styling */
+.about-page {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    padding: 20px;
+  }
+  
+  /* Header Section */
+  .about-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .about-header h1 {
+    font-size: 2.5em;
+    color: #2c3e50;
+  }
+  
+  .about-header p {
+    font-size: 1.2em;
+    color: #555;
+  }
+  
+  /* Section Styling */
+  .about-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .about-card {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    flex: 1 1 calc(33.333% - 40px); /* Make it responsive */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .about-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .about-card h2 {
+    font-size: 1.5em;
+    color: #e67e22;
+    margin-bottom: 10px;
+  }
+  
+  .about-card p {
+    font-size: 1em;
+    color: #555;
+  }
+  
+  /* Footer Section */
+  .about-footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+  }
+  
+  .about-footer h2 {
+    font-size: 2em;
+    color: #2c3e50;
+  }
+  
+  .about-footer p {
+    font-size: 1.2em;
+    color: #555;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .about-section {
+      flex-direction: column;
+    }
+  
+    .about-card {
+      flex: 1 1 100%;
+    }
+  }
+  
