@@ -19,16 +19,30 @@ interface Artist {
   artworks: Artwork[];
 }
 
-function ArtistListPage() {
+interface ArtistListPageProps {
+  searchQuery: string; // Accept searchQuery as a prop
+}
+
+const ArtistListPage: React.FC<ArtistListPageProps> = ({ searchQuery }) => {
   const [artists, setArtists] = useState<Artist[]>([]);
   const navigate = useNavigate();
 
+  // Fetch the list of artists when the component is mounted
   useEffect(() => {
     axios
-      .get<Artist[]>(`${import.meta.env.VITE_API_URL}/artists`)
-      .then((response) => setArtists(response.data))
-      .catch((error) => console.error("Error fetching artists:", error));
+      .get<Artist[]>(`${import.meta.env.VITE_API_URL}/artists`) // Get artists from the API
+      .then((response) => {
+        setArtists(response.data); // Set the fetched artists into state
+      })
+      .catch((error) => {
+        console.error("Error fetching artists:", error);
+      });
   }, []);
+
+  // Filter artists based on search query (simple case-insensitive match)
+  const filteredArtists = artists.filter((artist) =>
+    artist.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   const handleCreateArtworkClick = (artistId: string) => {
     navigate(`/create-artwork?artistId=${artistId}`);
@@ -36,26 +50,29 @@ function ArtistListPage() {
 
   return (
     <div className="artist-list-page">
-    <header className="artist-header">
-        <h1>Artist List</h1>
-        <p>Browse through our collection of talented artists and their works.</p>
-    </header>
-    <section className="artist-section">
-        {artists.map((artist) => (
+      <section className="artist-section">
+        {filteredArtists.length > 0 ? (
+          filteredArtists.map((artist) => (
             <div key={artist.id} className="artist-card">
-                <h2>{artist.name}</h2>
-                <p>{artist.bio}</p>
-                <p>Born: {artist.birthYear}</p>
-                <div className="button-group">
-                    <button onClick={() => navigate(`/artist/${artist.id}/artworks`)}>View Artworks</button>
-                    <button onClick={() => handleCreateArtworkClick(artist.id)}>Create Artwork</button>
-                </div>
+              <h2>{artist.name}</h2>
+              <p>{artist.bio}</p>
+              <p>Born: {artist.birthYear}</p>
+              <div className="button-group">
+                <button onClick={() => navigate(`/artist/${artist.id}/artworks`)}>
+                  View Artworks
+                </button>
+                <button onClick={() => handleCreateArtworkClick(artist.id)}>
+                  Create Artwork
+                </button>
+              </div>
             </div>
-        ))}
-    </section>
-</div>
-  )
-    
-}
+          ))
+        ) : (
+          <p>No artists found matching your search.</p>
+        )}
+      </section>
+    </div>
+  );
+};
 
 export default ArtistListPage;

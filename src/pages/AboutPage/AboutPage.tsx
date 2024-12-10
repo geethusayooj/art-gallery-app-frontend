@@ -4,7 +4,7 @@ function AboutPage() {
   return (
     <div className="about-page">
       <header className="about-header">
-        <h1>About Art Gallery Management App</h1>
+        
         <p>
           Our web application is designed to simplify the management of art galleries, enabling seamless operations for 
           artworks and artists.

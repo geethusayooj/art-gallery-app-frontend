@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Logo from "../assets/360_F_359216202_AXS6T4d8rCETqVM9oH1dRfQpxWd3swws.jpg"; 
+import Logo from "../assets/art-palette-and-brush-tools-for-artist-vector-37387686.jpg"; 
 import "./Navbar.css";
 
 interface NavbarProps {
   onSearch: (searchTerm: string) => void; 
 }
+function Navbar({ onSearch }: NavbarProps) {
 
-const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
   const [selectedTab, setSelectedTab] = useState<string>("/");
   const [searchInput, setSearchInput] = useState<string>("");
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
   }, [location.pathname]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(e.target.value);
+    setSearchInput(e.target.value); 
   };
 
   const handleSearchSubmit = (e: React.FormEvent) => {
@@ -31,9 +31,6 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
   return (
     <nav className="Navbar">
       <img className="logoimage" src={Logo} alt="Gallery Logo" />
-      {/* <div className="iconmenu">
-        <img src={iconmenu} alt="menu icon" />
-      </div> */}
 
       <Tabs
         value={selectedTab}
@@ -43,13 +40,13 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
       >
         <Tab value="/" label="Home" classes={{ root: "tab" }} />
         <Tab value="/about" label="About" classes={{ root: "tab" }} />
-        <Tab value="/products/create" label="Create" classes={{ root: "tab" }} />
+        <Tab value="/artists" label="Create" classes={{ root: "tab" }} />
       </Tabs>
 
       <form onSubmit={handleSearchSubmit} className="search-form">
         <input
           type="text"
-          placeholder="Search artwork..."
+          placeholder="Search here..."
           value={searchInput}
           onChange={handleInputChange}
           className="search-input"

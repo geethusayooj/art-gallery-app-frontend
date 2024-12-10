@@ -13,9 +13,10 @@
   
   /* Logo Styles */
   .Navbar .logoimage {
-    height: 50px; /* Adjust the size of your logo */
+    height: 70px; /* Adjust the size of your logo */
     width: auto;
     object-fit: contain;
+    border-radius: 40%;
   }
   
   /* Styling for Tabs */
@@ -29,17 +30,24 @@
   .MuiTab-root {
     font-size: 18px;
     font-weight: bold;
-    color: white;
+    color: white !important;
     margin: 0 15px;
     text-transform: capitalize;
   }
+
+  .MuiTab-root:active{
+    border: none !important;
+    outline: none !important; 
+  }
   
   .MuiTab-root.Mui-selected {
-    color: #f39c12; /* Highlight color when selected */
+    color: #f39c12;
+    border: none !important;
+    outline: none !important;
   }
   
   .MuiTabs-indicator {
-    background-color: #f39c12; /* Indicator color */
+    background-color: #dddbdb; /* Indicator color */
   }
   
   /* Search Form Styling */
@@ -58,7 +66,7 @@
   }
   
   .search-button {
-    background-color: #f39c12;
+    background-color: #141311;
     border: none;
     padding: 5px 15px;
     font-size: 16px;
@@ -69,7 +77,7 @@
   }
   
   .search-button:hover {
-    background-color: #e67e22;
+    background-color: #161513;
   }
   
   /* Media Queries for responsiveness */
