@@ -31,7 +31,7 @@ function CreateArtworkPage() {
       })
       .then(() => {
         setMessage("Artwork created successfully!");
-        setTimeout(() => navigate("/"), 2000); // Navigate back to the main page after success
+        setTimeout(() => navigate("/"), 2000); 
       })
       .catch((error) => {
         console.error("Error creating artwork:", error);

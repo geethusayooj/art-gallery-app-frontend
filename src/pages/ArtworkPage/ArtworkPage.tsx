@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import "./ArtworkPage.css"; 
+import "./ArtworkPage.css";
 import axios from "axios";
 
 interface Artwork {
@@ -25,14 +25,14 @@ function ArtworkPage() {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  // Handles editing an artwork
   const handleEditArtwork = (artworkId: string) => {
     navigate(`/artwork/edit/${artworkId}`);
   };
 
-  // Handles deleting an artwork
   const handleDeleteArtwork = (artworkId: string) => {
-    const confirmDelete = window.confirm("Are you sure you want to delete this artwork?");
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this artwork?"
+    );
     if (confirmDelete) {
       axios
         .delete(`${import.meta.env.VITE_API_URL}/artworks/${artworkId}`)
@@ -40,7 +40,9 @@ function ArtworkPage() {
           if (artist) {
             setArtist({
               ...artist,
-              artworks: artist.artworks.filter((artwork) => artwork.id !== artworkId),
+              artworks: artist.artworks.filter(
+                (artwork) => artwork.id !== artworkId
+              ),
             });
           }
         })
@@ -51,7 +53,6 @@ function ArtworkPage() {
     }
   };
 
-  // Fetch artist and artwork data
   useEffect(() => {
     if (!artistId) {
       console.error("No artistId found in URL");
@@ -70,7 +71,6 @@ function ArtworkPage() {
       });
   }, [artistId]);
 
-  // Loading state
   if (loading) {
     return (
       <div className="loading-container">
@@ -79,7 +79,6 @@ function ArtworkPage() {
     );
   }
 
-  // Error state if artist is not found
   if (!artist) {
     return (
       <div className="error-container">
@@ -90,13 +89,11 @@ function ArtworkPage() {
 
   return (
     <div className="artwork-page">
-      {/* Artist Details */}
       <header className="artwork-header">
         <h1>Artworks by {artist.name}</h1>
         <p>{artist.bio}</p>
       </header>
 
-      {/* Artworks Grid */}
       <section className="artwork-section">
         {artist.artworks.map((artwork) => (
           <div className="artwork-card" key={artwork.id}>
@@ -105,14 +102,17 @@ function ArtworkPage() {
             <p>Year: {artwork.year}</p>
             <p>Price: ${artwork.price}</p>
             <div className="button-group">
-              <button onClick={() => handleEditArtwork(artwork.id)}>Edit</button>
-              <button onClick={() => handleDeleteArtwork(artwork.id)}>Delete</button>
+              <button onClick={() => handleEditArtwork(artwork.id)}>
+                Edit
+              </button>
+              <button onClick={() => handleDeleteArtwork(artwork.id)}>
+                Delete
+              </button>
             </div>
           </div>
         ))}
       </section>
 
-      {/* Back Button */}
       <footer className="artwork-footer">
         <button onClick={() => navigate("/")}>Back</button>
       </footer>

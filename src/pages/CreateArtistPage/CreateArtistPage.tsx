@@ -20,7 +20,7 @@ function CreateArtistPage() {
         birthYear,
       });
       setMessage('Artist created successfully!');
-      setTimeout(() => navigate('/'), 2000); // Navigate back after success
+      setTimeout(() => navigate('/'), 2000); 
     } catch (error) {
       console.error('Error creating artist:', error);
       setMessage('Failed to create artist. Please try again.');

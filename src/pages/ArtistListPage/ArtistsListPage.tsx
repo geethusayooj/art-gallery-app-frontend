@@ -27,19 +27,17 @@ const ArtistListPage: React.FC<ArtistListPageProps> = ({ searchQuery }) => {
   const [artists, setArtists] = useState<Artist[]>([]);
   const navigate = useNavigate();
 
-  // Fetch the list of artists when the component is mounted
   useEffect(() => {
     axios
-      .get<Artist[]>(`${import.meta.env.VITE_API_URL}/artists`) // Get artists from the API
+      .get<Artist[]>(`${import.meta.env.VITE_API_URL}/artists`)
       .then((response) => {
-        setArtists(response.data); // Set the fetched artists into state
+        setArtists(response.data);
       })
       .catch((error) => {
         console.error("Error fetching artists:", error);
       });
   }, []);
 
-  // Filter artists based on search query (simple case-insensitive match)
   const filteredArtists = artists.filter((artist) =>
     artist.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -58,7 +56,9 @@ const ArtistListPage: React.FC<ArtistListPageProps> = ({ searchQuery }) => {
               <p>{artist.bio}</p>
               <p>Born: {artist.birthYear}</p>
               <div className="button-group">
-                <button onClick={() => navigate(`/artist/${artist.id}/artworks`)}>
+                <button
+                  onClick={() => navigate(`/artist/${artist.id}/artworks`)}
+                >
                   View Artworks
                 </button>
                 <button onClick={() => handleCreateArtworkClick(artist.id)}>
