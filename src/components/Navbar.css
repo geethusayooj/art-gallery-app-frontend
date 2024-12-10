@@ -9,6 +9,8 @@
     top: 0;
     z-index: 1000;
     height: 70px;
+    position: fixed;
+    width:100%
   }
   
   /* Logo Styles */
@@ -54,6 +56,7 @@
   .search-form {
     display: flex;
     align-items: center;
+    padding-right: 70px;
   }
   
   .search-input {
@@ -68,7 +71,7 @@
   .search-button {
     background-color: #141311;
     border: none;
-    padding: 5px 15px;
+    padding: 5px;
     font-size: 16px;
     color: white;
     cursor: pointer;
