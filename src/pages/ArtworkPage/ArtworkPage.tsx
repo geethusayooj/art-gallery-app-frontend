@@ -35,7 +35,7 @@ function ArtworkPage() {
     const confirmDelete = window.confirm("Are you sure you want to delete this artwork?");
     if (confirmDelete) {
       axios
-        .delete(`${import.meta.env.VITE_API_URL}/artworks/${artworkId}`)
+        .delete(`${import.meta.env.VITE_API_URL}/api/artworks/${artworkId}`)
         .then(() => {
           if (artist) {
             setArtist({
