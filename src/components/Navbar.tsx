@@ -28,36 +28,33 @@ function Navbar({ onSearch }: NavbarProps) {
     }
   }, [location.pathname]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(e.target.value);
-  };
-
-  const handleSearchSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSearch(searchInput);
-  };
-
   return (
     <nav className="Navbar">
       <img className="logoimage" src={Logo} alt="Gallery Logo" />
 
       <Tabs
         value={selectedTab}
-        onChange={(e, newValue) => navigate(newValue)}
+        onChange={(_, newValue) => navigate(newValue)}
         sx={{ height: "100%" }}
         classes={{ indicator: "indicator" }}
       >
         <Tab value="/" label="Home" classes={{ root: "tab" }} />
         <Tab value="/about" label="About" classes={{ root: "tab" }} />
-        <Tab value="/artists" label="Create" classes={{ root: "tab" }} />
+        <Tab value="/create-artwork" label="Create" classes={{ root: "tab" }} />
       </Tabs>
 
-      <form onSubmit={handleSearchSubmit} className="search-form">
+      <form 
+        onSubmit={(e) => {
+          e.preventDefault();
+          onSearch(searchInput);
+        }} 
+        className="search-form"
+      >
         <input
           type="text"
           placeholder="Search here..."
           value={searchInput}
-          onChange={handleInputChange}
+          onChange={(e) => setSearchInput(e.target.value)}
           className="search-input"
         />
         <button type="submit" className="search-button">
@@ -69,3 +66,4 @@ function Navbar({ onSearch }: NavbarProps) {
 }
 
 export default Navbar;
+
