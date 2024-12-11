@@ -40,7 +40,7 @@ function Navbar({ onSearch }: NavbarProps) {
       >
         <Tab value="/" label="Home" classes={{ root: "tab" }} />
         <Tab value="/about" label="About" classes={{ root: "tab" }} />
-        <Tab value="/create-artwork" label="Create" classes={{ root: "tab" }} />
+        <Tab value="/artists" label="Create" classes={{ root: "tab" }} />
       </Tabs>
 
       <form 
