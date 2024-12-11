@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import { useParams, useNavigate } from "react-router-dom";
 import "./ArtworkPage.css";
 import axios from "axios";
