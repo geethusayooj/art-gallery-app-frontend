@@ -60,7 +60,7 @@ function ArtworkPage() {
     }
 
     axios
-      .get<Artist>(`${import.meta.env.VITE_API_URL}/api/artists/${artistId}`)
+      .get<Artist>(`${import.meta.env.VITE_API_URL}/api/artworks?artistId=${artistId}`)
       .then((response) => {
         setArtist(response.data);
         setLoading(false);
