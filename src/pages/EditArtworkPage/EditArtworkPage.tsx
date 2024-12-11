@@ -22,7 +22,7 @@ const EditArtworkPage = () => {
 
     axios
       .get<{ title: string; year: number; price: number; imageUrl: string }>(
-        `${import.meta.env.VITE_API_URL}/api/artworks/${artworkId}`
+        `${import.meta.env.VITE_API_URL}/artworks/${artworkId}`
       )
       .then((response) => {
         setArtwork(response.data);
@@ -44,7 +44,7 @@ const EditArtworkPage = () => {
     }
 
     axios
-      .put(`${import.meta.env.VITE_API_URL}/api/artworks/${artworkId}`, artwork)
+      .put(`${import.meta.env.VITE_API_URL}/artworks/${artworkId}`, artwork)
       .then(() => {
         alert("Artwork updated successfully!");
         navigate(-1);

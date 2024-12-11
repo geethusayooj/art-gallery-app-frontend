@@ -14,7 +14,7 @@ function CreateArtistPage() {
     event.preventDefault();
 
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/api/artists`, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/artists`, {
         name,
         bio,
         birthYear,

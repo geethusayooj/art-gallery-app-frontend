@@ -29,7 +29,7 @@ const ArtistListPage: React.FC<ArtistListPageProps> = ({ searchQuery }) => {
 
   useEffect(() => {
     axios
-      .get<Artist[]>(`${import.meta.env.VITE_API_URL}/api/artists`)
+      .get<Artist[]>(`${import.meta.env.VITE_API_URL}/artists`)
       .then((response) => {
         setArtists(response.data);
       })
@@ -57,7 +57,7 @@ const ArtistListPage: React.FC<ArtistListPageProps> = ({ searchQuery }) => {
               <p>Born: {artist.birthYear}</p>
               <div className="button-group">
                 <button
-                  onClick={() => navigate(`/api/artists/${artist.id}`)}
+                  onClick={() => navigate(`/artist/${artist.id}/artworks`)}
                 >
                   View Artworks
                 </button>
