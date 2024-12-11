@@ -18,7 +18,7 @@ function App() {
       <Navbar onSearch={handleSearch} /> 
       <Routes>
         <Route path="/" element={<ArtistListPage searchQuery={searchQuery} />} />
-        <Route path="/artist/:artistId" element={<ArtworkPage />} />
+        <Route path="/artists/:artistId" element={<ArtworkPage />} />
         <Route path="/create-artwork" element={<CreateArtworkPage />} />
         <Route path="/artwork/edit/:artworkId" element={<EditArtworkPage />} />
         <Route path="/about" element={<AboutPage />} />
