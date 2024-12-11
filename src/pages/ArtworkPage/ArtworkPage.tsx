@@ -26,7 +26,7 @@ function ArtworkPage() {
   const navigate = useNavigate();
 
   const handleEditArtwork = (artworkId: string) => {
-    navigate(`/artwork/edit/${artworkId}`);
+    navigate(`/api/artwork/edit/${artworkId}`);
   };
 
   const handleDeleteArtwork = (artworkId: string) => {
@@ -35,7 +35,7 @@ function ArtworkPage() {
     );
     if (confirmDelete) {
       axios
-        .delete(`${import.meta.env.VITE_API_URL}/artworks/${artworkId}`)
+        .delete(`${import.meta.env.VITE_API_URL}/api/artworks/${artworkId}`)
         .then(() => {
           if (artist) {
             setArtist({
@@ -60,7 +60,7 @@ function ArtworkPage() {
     }
 
     axios
-      .get<Artist>(`${import.meta.env.VITE_API_URL}/artists/${artistId}`)
+      .get<Artist>(`${import.meta.env.VITE_API_URL}/api/artists/${artistId}`)
       .then((response) => {
         setArtist(response.data);
         setLoading(false);
