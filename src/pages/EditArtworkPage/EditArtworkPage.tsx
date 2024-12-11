@@ -44,7 +44,7 @@ const EditArtworkPage = () => {
     }
 
     axios
-      .put(`${import.meta.env.VITE_API_URL}/artworks/${artworkId}`, artwork)
+      .put(`${import.meta.env.VITE_API_URL}/api/artworks/${artworkId}`, artwork)
       .then(() => {
         alert("Artwork updated successfully!");
         navigate(-1);
