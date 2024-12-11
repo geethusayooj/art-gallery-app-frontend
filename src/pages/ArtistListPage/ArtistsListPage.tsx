@@ -29,7 +29,7 @@ const ArtistListPage: React.FC<ArtistListPageProps> = ({ searchQuery }) => {
 
   useEffect(() => {
     axios
-      .get<Artist[]>(`${import.meta.env.VITE_API_URL}/api/artists`)
+      .get<Artist[]>(`${import.meta.env.VITE_API_URL}/artists`)
       .then((response) => {
         setArtists(response.data);
       })
@@ -42,14 +42,9 @@ const ArtistListPage: React.FC<ArtistListPageProps> = ({ searchQuery }) => {
     artist.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-
- const handleViewArtworksClick = (artistId: string) => {
-
-  navigate(`/artist/${artistId}/artworks`, {
-
-    state: { artistId },
-  });
-};
+  const handleCreateArtworkClick = (artistId: string) => {
+    navigate(`/create-artwork?artistId=${artistId}`);
+  };
 
   return (
     <div className="artist-list-page">
@@ -62,11 +57,11 @@ const ArtistListPage: React.FC<ArtistListPageProps> = ({ searchQuery }) => {
               <p>Born: {artist.birthYear}</p>
               <div className="button-group">
                 <button
-                  onClick={() => navigate(`/artist/${artist.id}/artworks`)}
+                  onClick={() => navigate(`/api/artists/${artist.id}`)}
                 >
                   View Artworks
                 </button>
-                <button onClick={() => handleViewArtworksClick(artist.id)}>
+                <button onClick={() => handleCreateArtworkClick(artist.id)}>
                   Create Artwork
                 </button>
               </div>
