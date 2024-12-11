@@ -29,7 +29,7 @@ const ArtistListPage: React.FC<ArtistListPageProps> = ({ searchQuery }) => {
 
   useEffect(() => {
     axios
-      .get<Artist[]>(`${import.meta.env.VITE_API_URL}/artists`)
+      .get<Artist[]>(`${import.meta.env.VITE_API_URL}/api/artists`)
       .then((response) => {
         setArtists(response.data);
       })
