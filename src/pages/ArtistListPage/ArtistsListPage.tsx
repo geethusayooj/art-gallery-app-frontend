@@ -57,7 +57,7 @@ const ArtistListPage: React.FC<ArtistListPageProps> = ({ searchQuery }) => {
               <p>Born: {artist.birthYear}</p>
               <div className="button-group">
                 <button
-                  onClick={() => navigate(`/api/artist/${artist.id}/artworks`)}
+                  onClick={() => navigate(`/api/artist/${artist.id}/api/artworks`)}
                 >
                   View Artworks
                 </button>
