@@ -42,9 +42,14 @@ const ArtistListPage: React.FC<ArtistListPageProps> = ({ searchQuery }) => {
     artist.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const handleCreateArtworkClick = (artistId: string) => {
-    navigate(`/create-artwork?artistId=${artistId}`);
-  };
+
+ const handleViewArtworksClick = (artistId: string) => {
+
+  navigate(`/artist/${artistId}/artworks`, {
+
+    state: { artistId },
+  });
+};
 
   return (
     <div className="artist-list-page">
@@ -61,7 +66,7 @@ const ArtistListPage: React.FC<ArtistListPageProps> = ({ searchQuery }) => {
                 >
                   View Artworks
                 </button>
-                <button onClick={() => handleCreateArtworkClick(artist.id)}>
+                <button onClick={() => handleViewArtworksClick(artist.id)}>
                   Create Artwork
                 </button>
               </div>
