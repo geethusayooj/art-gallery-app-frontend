@@ -22,7 +22,7 @@ function CreateArtworkPage() {
     }
 
     axios
-      .post(`${import.meta.env.VITE_API_URL}/artworks`, {
+      .post(`${import.meta.env.VITE_API_URL}/api/artworks`, {
         title,
         artistId, // Include artistId in the request
         year,
